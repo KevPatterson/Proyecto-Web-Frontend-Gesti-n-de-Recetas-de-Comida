@@ -1,0 +1,15 @@
+<tr>
+                            <td>espagetti</td>
+                            <td><img src="/img/affogato.jpg" alt="" width="50" height="50"></td>
+                            <td>tomate,fideos</td>
+                            <td>50 mindgsdgdfgdfgdfgd</td>
+                            <td>3 min</td>
+                            <td>5</td>
+                            <td>comida</td>
+                            <td>casero </td>
+                            <td>
+                                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#readData"><i class="bi bi-eye"></i></button>
+                                <button class="btn btn-primary"><i class="bi bi-pencil-square"></i></button>
+                                <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            </td>
+                            </tr>

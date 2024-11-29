@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+
+    <!-- Site Metas -->
+    <title>Cocina con nosotros</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="Proyecto de Gestion de Recetas de Cocina">
+    <meta name="author" content="Patterson">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="https://unicons.iconscout.com/release/v4.0.8/script/monochrome/bundle.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/thinline.css">
+    <script src="https://kit.fontawesome.com/45c72ddee0.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- color -->
+    <link id="changeable-colors" rel="stylesheet" href="css/colors/orange.css" />
+
+    <!-- Modernizer -->
+    <script src="js/modernizer.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<!--NOTA: Aceptar Terminos y Condiciones-->
+<body>
+    <div id="loader">
+        <div id="status"></div>
+    </div>
+    <div id="site-header">
+        <header id="header" class="header-block-top">
+            <div class="container">
+                <div class="row">
+                    <div class="main-menu">
+                        <!-- navbar -->
+                        <nav class="navbar navbar-default" id="mainNav">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="logo">
+                                    <a class="navbar-brand js-scroll-trigger logo-header" href="#">
+                                        <img src="images/logo.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a href="#banner">Inicio</a></li>
+                                    <li><a href="#about">Sobre Nosotros</a></li>
+                                    <li><a href="#our_team">Equipo</a></li>
+                                    <li><a href="recetasForm.html">Agregar</a></li>
+                                    <li><a href="libro_de_recetas.html">Libro de Recetas</a></li>
+                                    <li><a href="#footer">Contactanos</a></li>
+                                    <li>
+                                        <div class="wrapper">
+                                            <form action="libro de recetas.html" class="search">
+                                                <span class="">
+                                                    <input type="submit"  id="searchInput" class="buscar" value="Buscar Recetas"><i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #060505;"></i>
+                                                </span>
+                                                <ul id="results"></ul>
+                                                <ul id="autocomplete"></ul>
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- end nav-collapse -->
+                        </nav>
+                        <!-- end navbar -->
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container-fluid -->
+        </header>
+        <!-- end header -->
+    </div>
+	<!-- end site-header -->
+	
+    <div id="banner" class="banner full-screen-mode parallax">
+        <div class="container pr">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="banner-static">
+                    <div class="banner-text">
+                        <div class="banner-cell">
+                            <h1>Cocina con <span class="typer" id="some-id" data-delay="200" data-delim=":" data-words="Nosotros:Tu Familia:Tus amigos" data-colors="red"></span><span class="cursor" data-cursorDisplay="_" data-owner="some-id"></span></h1>
+                            <h2>Aprende a Cocinar con nosotros</h2>
+                            <p>El secreto de un buen plato está en el amor con el que se cocina</p>
+                            <div class="book-btn">
+                                <a href="login.html" class="table-btn hvr-underline-from-center">Iniciar Sesión</a>
+                            </div>
+                            <a href="#about">
+                                <div class="mouse"></div>
+                            </a>
+                        </div>
+                        <!-- end banner-cell -->
+                    </div>
+                    <!-- end banner-text -->
+                </div>
+                <!-- end banner-static -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end banner -->
+
+    <div id="about" class="about-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title"> Sobre Nosotros </h2>
+                        <h3>TEN UN VIAJE DE SABORES: Explorando el Mundo desde tu Cocina</h3>
+                        <p> En Cocina con Nosotros, creemos que la cocina es una experiencia que va más allá de los ingredientes y las técnicas. Es una forma de conectar con nuestras raíces, explorar culturas y crear momentos inolvidables con nuestros seres queridos. </p>
+                        <p> Desde recetas tradicionales que han pasado de generación en generación hasta innovadoras creaciones culinarias, estamos aquí para inspirarte y guiarte en tu viaje gastronómico. Nuestro equipo de apasionados cocineros y entusiastas de la comida trabaja incansablemente para ofrecerte recetas detalladas, consejos prácticos y trucos de cocina que te ayudarán a convertirte en un chef en tu propia casa.</p>
+                        <p> Queremos que Cocina con Nosotros sea tu fuente de inspiración diaria, ya sea que estés buscando una receta rápida para una cena entre semana, un plato espectacular para una ocasión especial o simplemente quieras experimentar con nuevos sabores. Aquí, todos los amantes de la cocina tienen un lugar y una voz. </p>
+                        <p>Gracias por unirte a nosotros en esta deliciosa aventura. ¡Manos a la obra y a disfrutar del arte de cocinar juntos!</p>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="about-images">
+                            <img class="about-main" src="images/about-main.jpg" alt="About Main Image">
+                            <img class="about-inset" src="images/about-inset.jpg" alt="About Inset Image">
+                        </div>
+                    </div>
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+
+    <div class="special-menu pad-top-100 parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title color-white text-center"> Recetas en Tendencia </h2>
+                        <h5 class="title-caption text-center"> Explora el arte culinario y descubre sabores únicos con recetas deliciosa y fáciles de preparar para cada ocasión</h5>
+                    </div>
+                    <div class="special-box">
+                        <div id="owl-demo">
+                            <div class="item item-type-zoom">
+                                <a href="libro de recetas.html#pollo" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            CORDÓN BLEU
+                                            <div class="line"></div>
+                                            <div class="dit-line">Esta preparación de escalope, jamón y queso, todo ello rebozado, tiene su origen en Francia.</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/pollo.jpg" alt="sp-menu">
+                                </div>
+                            </div>
+                            <div class="item item-type-zoom">
+                                <a href="libro de recetas.html#ramen" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            RAMEN
+                                            <div class="line"></div>
+                                            <div class="dit-line">Un cuenco de sopa muy caliente acompañada de fideos y algunos otros ingredientes que en la mayoría de casos suelen ser verduras.</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/ramen.jpg" alt="sp-menu">
+                                </div>
+                            </div>
+                            <div class="item item-type-zoom">
+                                <a href="libro de recetas.html#tacos" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            TACOS AL PASTOR
+                                            <div class="line"></div>
+                                            <div class="dit-line">Los tacos al pastor o de trompo son la variedad de tacos más populares en la mayor parte de México hechos con carne adobada, asada, servida en finas rebanadas sobre pequeñas tortillas de maíz.</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/tacos.jpg" alt="sp-menu">
+                                </div>
+                            </div>
+                            <div class="item item-type-zoom">
+                                <a href="libro de recetas.html#pizza" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            PIZZA DE PEPPERONI
+                                            <div class="line"></div>
+                                            <div class="dit-line">Pizza grande, llena de sabor, con el toque picante del pepperoni y el sabor intenso de los hongos, cubierta con nuestra deliciosa salsa clásica y extra queso.</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/pizza.jpg" alt="sp-menu">
+                                </div>
+                            </div>
+                            <div class="item item-type-zoom">
+                                <a href="libro de recetas.html#affogato" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            AFFOGATO
+                                            <div class="line"></div>
+                                            <div class="dit-line">Si bien en los restaurantes y cafés en Italia el affogato es considerado un postre, en algunos restaurantes y cafés fuera de Italia se le considera una bebida.</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+                                    <img src="images/affogato.jpg" alt="sp-menu">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end special-box -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end special-menu -->
+
+    <div id="our_team" class="team-main pad-top-100 pad-bottom-100 parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title text-center">
+						Nuestro Equipo	
+					</h2>
+                        <!--p class="title-caption text-center">. </p>-->
+                    </div>
+                    <div class="team-box">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="sf-team">
+                                    <div class="thumb">
+                                        <a href="#"><img src="images/Diosmany.jpg" alt=""></a>
+                                    </div>
+                                    <div class="text-col">
+                                        <h3>Diosmany Cereste Reyes</h3>
+                                        <p> <ul class="team-social">
+                                            <li><a href="https://www.facebook.com/diosmany.cereste"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="sf-team">
+                                    <div class="thumb">
+                                        <a href="#"><img src="images/Otero.jpg" alt=""></a>
+                                    </div>
+                                    <div class="text-col">
+                                        <h3>Kevin Otero Vals</h3>
+                                        <p> <ul class="team-social">
+                                            <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col --><div class="col-md-4 col-sm-6">
+                                <div class="sf-team">
+                                    <div class="thumb">
+                                        <a href="#"><img src="images/Ida.jpg" alt=""></a>
+                                    </div>
+                                    <div class="text-col">
+                                        <h3>Idaleydis Castellano</h3>
+                                        <p> <ul class="team-social">
+                                            <li><a href="https://www.facebook.com/idaleydis.cj"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col --><div class="col-md-4 col-sm-6">
+                                <div class="sf-team">
+                                    <div class="thumb">
+                                        <a href="#"><img src="images/Jose.jpg" alt=""></a>
+                                    </div>
+                                    <div class="text-col">
+                                        <h3>Jose A. Sevila</h3>
+                                        <p> <ul class="team-social">
+                                            <li><a href="https://www.facebook.com/josealejandro.hernandezsevila"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col --><div class="col-md-4 col-sm-6">
+                                <div class="sf-team">
+                                    <div class="thumb">
+                                        <a href="#"><img src="images/Patterson.jpg" alt=""></a>
+                                    </div>
+                                    <div class="text-col">
+                                        <h3>Kevin R. Patterson</h3>
+                                        <p> <ul class="team-social">
+                                            <li><a href="https://www.facebook.com/kevin.patterson.940641"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!-- end row -->
+
+                    </div>
+                    <!-- end team-box -->
+
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end team-main -->
+
+    <div id="reservation" class="reservations-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="form-reservations-box">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h2 class="block-title text-center">Comparte tus delicias culinarias con nuestra comunidad
+                                </h2>
+                                <p>En esta sección, te invitamos a compartir tus recetas favoritas con todos nosotros. Ya sea un delicioso desayuno, una comida reconfortante, un postre irresistible o una bebida refrescante, queremos conocer tus mejores creaciones. Comparte los ingredientes y las instrucciones detalladas para que otros también puedan disfrutar de tus obras maestras culinarias. ¡Anímate a inspirar a otros con tu talento en la cocina y a descubrir nuevas recetas que enriquecerán tu recetario personal!</p>
+                                
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="reserve-book-btn text-center">
+                                        <p>Haz click aquí para agregar tu receta:</p>
+                                        <div class="book-btn">
+                                            <a href="/crud/indexCrud.html" class="table-btn hvr-underline-from-center">Agregar Receta</a> <br><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- end col -->
+                        </form>
+                        <!-- end form -->
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end reservations-box -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end reservations-main -->
+
+    <div id="footer" class="footer-main">
+        <div class="footer-news pad-top-100 pad-bottom-70 parallax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <h2 class="ft-title color-white text-center"> Déjenos su comentario </h2>
+                            <p> <strong>¡Comparta su Experiencia! </strong></p>
+                            <p>Nos encantaría escuchar tu opinión y aprender de tus experiencias en Cocina con Nosotros. Tus comentarios y sugerencias no solo nos ayudan a mejorar, sino que también inspiran a otros amantes de la cocina como tú. Comparte tus pensamientos, preguntas y cualquier cosa que te gustaría ver en nuestra página. ¡Tu voz es importante para nosotros!</p>
+                        </div>
+                        <form>
+                            <input type="email" placeholder="Escriba su correo electronico">
+                            <a href="#" class="orange-btn"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
+                        </form>
+                    </div>
+                    <!-- end col -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </div>
+        <!-- end footer-news -->
+        <div class="footer-box pad-top-70">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-in-main">
+                        <div class="footer-logo">
+                            <div class="text-center">
+                                <img src="images/logo.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-a">
+                                <h3>Sobre Nosotros</h3>
+                                <p>Cocina con Nosotros es tu aliado en la cocina, donde las recetas cobran vida y los sabores se convierten en recuerdos. Nos apasiona la cocina y queremos compartir esa pasión contigo, una receta a la vez.</p>
+                                <ul class="socials-box footer-socials pull-left">
+                                    <li>
+                                        <a href="https://facebook.com">
+                                            <div class="social-circle-border"><i class="fa  fa-facebook"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com">
+                                            <div class="social-circle-border"><i class="fa fa-twitter"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://google.com">
+                                            <div class="social-circle-border"><i class="fa fa-google-plus"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://pinterest.com">
+                                            <div class="social-circle-border"><i class="fa fa-pinterest"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://linkedin.com">
+                                            <div class="social-circle-border"><i class="fa fa-linkedin"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- end footer-box-a -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-b">
+                                <h3>Recetas Recomendadas</h3>
+                                <ul>
+                                    <li><a href="#dumplings">Dumplings</a></li>
+                                    <li><a href="#lasagna">Lasagna</a></li>
+                                    <li><a href="#estofado_de_res">Estofado de Res</a></li>
+                                    <li><a href="#pollo_pina">Pollo Navideño Relleno de Piña</a></li>
+                                </ul>
+                            </div>
+                            <!-- end footer-box-b -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-c">
+                                <h3>Contacta Con Nosotros</h3>
+                                <p>
+                                    <i class="fa fa-map-signs" aria-hidden="true"></i>
+                                    <span>Carretera San Antonio de los Baños, Km 2 ½, reparto Torrens, municipio Boyeros, La Habana, Cuba</span>
+                                </p>
+                                <p>
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                    <span>
+									+53 569 542 00, +53 586 904 50, +53 545 116 93, +53 588 658 56, +53 592 747 78  
+								</span>
+                                </p>
+                                <p>
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span><a href="#">support@cocinaconnosotros.com</a></span>
+                                </p>
+                            </div>
+                            <!-- end footer-box-c -->
+                        </div>
+                            <!-- end footer-box-d -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end footer-in-main -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+            <div id="copyright" class="copyright-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h6 class="copy-title"> Cocina con Nosotros | Copyright &copy; 2024 | Todos los derechos reservados</a> </h6>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end copyright-main -->
+        </div>
+        <!-- end footer-box -->
+    </div>
+    <!-- end footer-main -->
+
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+
+    <section id="color-panel" class="close-color-panel">
+        <a class="panel-button gray2"><i class="fa fa-cog fa-spin fa-2x"></i></a>
+        <!-- Colors -->
+        <div class="segment">
+            <h4 class="gray2 normal no-padding">Cambiar Tema</h4>
+            <a title="orange" class="switcher orange-bg"></a>
+            <a title="strong-blue" class="switcher strong-blue-bg"></a>
+            <a title="moderate-green" class="switcher moderate-green-bg"></a>
+            <a title="vivid-yellow" class="switcher vivid-yellow-bg"></a>
+        </div>
+    </section>
+</body>
+
+    <!-- ALL JS FILES -->
+    <script src="js/all.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="js/custom.js"></script>
+    <script src="js/recetasForm.js"></script>
+    <script src="js/search.js"></script>
+</body>
+
+</html>

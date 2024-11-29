@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicar Recetas</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <style>
+        .content-wrapper {
+            margin-left: 250px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .modal-body input, .modal-body textarea {
+            width: 100%;
+        }
+        #previewImage {
+            max-width: 100px;
+            max-height: 100px;
+            margin-top: 10px;
+        }
+        .nav-item.has-treeview > .nav-treeview {
+            display: none;
+        }
+        .nav-item.has-treeview.open > .nav-treeview {
+            display: block;
+        }
+        .recipe-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" id="sidebarToggle" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+                    <i class="fas fa-th-large"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <div class="sidebar">
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Opciones principales -->
+                    <li class="nav-item">
+                        <a href="user.html" class="nav-link d-flex align-items-center">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p class="ml-2">Inicio</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="recetasForm.html" class="nav-link d-flex align-items-center active">
+                            <i class="nav-icon fas fa-pencil-alt"></i>
+                            <p class="ml-2">Publicar Recetas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="libro_de_recetas.html" class="nav-link d-flex align-items-center">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p class="ml-2">Libro de Recetas</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link d-flex align-items-center toggle">
+                            <i class="nav-icon fas fa-list"></i>
+                            <p class="ml-2">Categorías<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview ml-3">
+                            <li class="nav-item">
+                                <a href="libro_de_recetas.html#desayunos" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Desayunos</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="libro_de_recetas.html#comidas" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Comidas</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="libro_de_recetas.html#postres" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Postres</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="libro_de_recetas.html#bebidas" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Bebidas</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#footer" class="nav-link d-flex align-items-center">
+                            <i class="nav-icon fas fa-envelope"></i>
+                            <p class="ml-2">Contáctanos</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+    
+            <!-- Perfil y Cerrar Sesión -->
+            <div class="mt-auto p-3">
+                <ul class="nav nav-pills nav-sidebar flex-column">
+                    <li class="nav-item">
+                        <a href="user_profile.html" class="nav-link d-flex align-items-center">
+                            <i class="nav-icon fas fa-user-circle"></i>
+                            <p class="ml-2">Mi Perfil</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="login.html" class="nav-link d-flex align-items-center text-danger">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p class="ml-2">Cerrar Sesión</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Publica tus Recetas</h2>
+            <!-- Tabla de Recetas -->
+            <table class="table table-bordered" id="recetasTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Imagen</th>
+                        <th>Preparación</th>
+                        <th>Tiempo de Preparación</th>
+                        <th>Categoría</th>
+                        <th>Porciones</th>
+                        <th>Dificultad</th>
+                        <th>Autor</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <!-- Aquí se agregarían dinámicamente las recetas -->
+                </tbody>
+            </table>
+
+            <!-- Botón para añadir una nueva receta -->
+            <div class="text-center mt-4">
+                <button class="btn btn-primary" id="addRecipeBtn">Añadir Nueva Receta</button>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal para editar o agregar receta -->
+<div class="modal" tabindex="-1" role="dialog" id="editRecipeModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Añadir Nueva Receta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editRecipeForm">
+                        <div class="form-group">
+                            <label for="editName">Nombre</label>
+                            <input type="text" class="form-control" id="editName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editAuthor">Autor</label>
+                            <input type="text" class="form-control" id="editAuthor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editOrigen">Origen</label>
+                            <input type="text" class="form-control" id="editOrigen" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editImage">Imagen</label>
+                            <input type="file" class="form-control" id="editImage" accept="image/*">
+                            <img id="previewImage" src="" alt="Vista previa de la imagen" style="display: none;">
+                        </div>
+                        <div class="form-group">
+                            <label for="editPreparation">Preparación</label>
+                            <textarea class="form-control" id="editPreparation" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editTimeHours">Tiempo de Preparación (Horas)</label>
+                            <input type="number" class="form-control" id="editTimeHours" min="0" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="editTimeMinutes">Tiempo de Preparación (Minutos)</label>
+                            <input type="number" class="form-control" id="editTimeMinutes" min="0" max="59" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="editTimeSeconds">Tiempo de Preparación (Segundos)</label>
+                            <input type="number" class="form-control" id="editTimeSeconds" min="0" max="59" value="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="editCategory">Categoría</label>
+                            <select class="form-control" id="editCategory">
+                                <option value="Desayuno">Desayuno</option>
+                                <option value="Comida">Comida</option>
+                                <option value="Postre">Postre</option>
+                                <option value="Bebida">Bebida</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editPortions">Cantidad de Porciones</label>
+                            <input type="number" class="form-control" id="editPortions" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editDifficulty">Dificultad</label>
+                            <select class="form-control" id="editDifficulty">
+                                <option value="Casero">Casero</option>
+                                <option value="Profesional">Profesional</option>
+                                <option value="Gourmet">Gourmet</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="saveRecipeBtn">Guardar Receta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Ver Más -->
+<div class="modal" tabindex="-1" role="dialog" id="viewMoreModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Detalles de la Receta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Aquí se carga dinámicamente el contenido -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Bootstrap and jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    let editingIndex = null;
+
+    // Función para cargar recetas desde localStorage
+    function loadRecetas() {
+        const recetas = JSON.parse(localStorage.getItem('recetas')) || [];
+        const tbody = $('#recetasTable tbody');
+        tbody.empty(); // Limpiar tabla antes de agregar las recetas
+
+        recetas.forEach((receta, index) => {
+            const shortPreparation = receta.preparation.length > 100
+                ? receta.preparation.substring(0, 100) + '...'
+                : receta.preparation;
+
+            tbody.append(`
+                <tr data-index="${index}">
+                    <td>${receta.name}</td>
+                    <td><img src="${receta.image}" alt="${receta.name}" style="max-width: 100px;"></td>
+                    <td>
+                        ${shortPreparation}
+                        <button class="btn btn-link p-0 m-0 text-primary viewMoreBtn" data-index="${index}">
+                            Ver más
+                        </button>
+                    </td>
+                    <td>${receta.time}</td>
+                    <td>${receta.category}</td>
+                    <td>${receta.portions}</td>
+                    <td>${receta.difficulty}</td>
+                    <td>${receta.author}</td>
+                    <td>${receta.date}</td>
+                    <td>
+                        <button class="btn btn-warning editBtn">Editar</button>
+                        <button class="btn btn-danger deleteBtn">Eliminar</button>
+                    </td>
+                </tr>
+            `);
+        });
+    }
+
+    // Evento para mostrar el contenido completo de la preparación
+    $(document).on('click', '.viewMoreBtn', function () {
+        const index = $(this).data('index');
+        const receta = JSON.parse(localStorage.getItem('recetas'))[index];
+
+        $('#viewMoreModal .modal-body').html(`
+            <h5>${receta.name}</h5>
+            <p>${receta.preparation}</p>
+        `);
+
+        $('#viewMoreModal').modal('show');
+    });
+
+    // Guardar recetas en localStorage
+    function saveRecetas(recetas) {
+        localStorage.setItem('recetas', JSON.stringify(recetas));
+    }
+
+    // Agregar receta
+    function addReceta(receta) {
+        const recetas = JSON.parse(localStorage.getItem('recetas')) || [];
+        recetas.push(receta);
+        saveRecetas(recetas);
+        loadRecetas();
+    }
+
+    // Eliminar receta
+    function deleteReceta(index) {
+        const recetas = JSON.parse(localStorage.getItem('recetas')) || [];
+        recetas.splice(index, 1);
+        saveRecetas(recetas);
+        loadRecetas();
+    }
+
+    // Editar receta
+    function editReceta(index, updatedReceta) {
+        const recetas = JSON.parse(localStorage.getItem('recetas')) || [];
+        recetas[index] = updatedReceta;
+        saveRecetas(recetas);
+        loadRecetas();
+    }
+
+    // Evento para añadir receta
+    $('#addRecipeBtn').click(function () {
+        editingIndex = null; // Estamos creando una nueva receta
+        $('#editRecipeForm')[0].reset();
+        $('#previewImage').hide();
+        $('#modalTitle').text('Añadir Nueva Receta');
+        $('#editRecipeModal').modal('show');
+    });
+
+    // Evento para editar receta
+    $(document).on('click', '.editBtn', function () {
+        const row = $(this).closest('tr');
+        editingIndex = row.data('index');
+        const receta = JSON.parse(localStorage.getItem('recetas'))[editingIndex];
+
+        $('#editName').val(receta.name);
+        $('#editAuthor').val(receta.author);
+        $('#editOrigen').val(receta.origen);
+        $('#editPreparation').val(receta.preparation);
+        $('#editCategory').val(receta.category);
+        $('#editPortions').val(receta.portions);
+        $('#editDifficulty').val(receta.difficulty);
+
+        // Tiempo de preparación
+        const timeParts = receta.time.split(':');
+        $('#editTimeHours').val(timeParts[0]);
+        $('#editTimeMinutes').val(timeParts[1]);
+        $('#editTimeSeconds').val(timeParts[2]);
+
+        // Previsualización de la imagen
+        $('#previewImage').attr('src', receta.image).show();
+
+        $('#modalTitle').text('Editar Receta');
+        $('#editRecipeModal').modal('show');
+    });
+
+    // Evento para guardar o actualizar receta
+    $('#editRecipeForm').submit(function (event) {
+        event.preventDefault();
+
+        const hours = $('#editTimeHours').val().padStart(2, '0');
+        const minutes = $('#editTimeMinutes').val().padStart(2, '0');
+        const seconds = $('#editTimeSeconds').val().padStart(2, '0');
+        const time = `${hours}:${minutes}:${seconds}`;
+
+        const file = $('#editImage')[0].files[0];
+        let imageUrl = '';
+
+        if (file) {
+            imageUrl = URL.createObjectURL(file);
+        } else {
+            imageUrl = $('#previewImage').attr('src');
+        }
+
+        const receta = {
+            name: $('#editName').val(),
+            author: $('#editAuthor').val(),
+            origen: $('#editOrigen').val(),
+            date: new Date().toLocaleDateString(),
+            preparation: $('#editPreparation').val(),
+            time: time,
+            category: $('#editCategory').val(),
+            portions: $('#editPortions').val(),
+            difficulty: $('#editDifficulty').val(),
+            image: imageUrl
+        };
+
+        if (editingIndex === null) {
+            addReceta(receta);
+        } else {
+            editReceta(editingIndex, receta);
+        }
+
+        $('#editRecipeModal').modal('hide');
+    });
+
+    // Eliminar receta
+    $(document).on('click', '.deleteBtn', function () {
+        const index = $(this).closest('tr').data('index');
+        deleteReceta(index);
+    });
+
+    // Cargar recetas al iniciar
+    $(document).ready(function () {
+        loadRecetas();
+    });
+
+    //SideBar Toggle
+    $('#sidebarToggle').on('click', function (e) {
+        e.preventDefault();
+        $('.sidebar').toggleClass('hidden');
+        $('.content-wrapper').toggleClass('ml-0');
+    });
+
+    // Desplegar categorías
+    document.querySelectorAll('.toggle').forEach(function(toggle) {
+        toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const parent = toggle.parentElement;
+        parent.classList.toggle('open');
+    });
+    });
+</script>
+</body>
+</html>

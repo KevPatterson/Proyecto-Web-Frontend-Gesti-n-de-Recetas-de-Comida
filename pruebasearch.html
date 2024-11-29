@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador con Autocompletado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #results {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #results li {
+            padding: 8px;
+            background: #f0f0f0;
+            margin: 5px 0;
+        }
+        #autocomplete {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            display: none; /* Oculto por defecto */
+            position: absolute;
+            background: white;
+            z-index: 1000;
+            width: 100%; /* Asegurarse de que ocupe el mismo ancho que el input */
+        }
+        #autocomplete li {
+            padding: 8px;
+            cursor: pointer;
+        }
+        #autocomplete li:hover {
+            background: #e0e0e0;
+        }
+        .hidden {
+            display: none; /* Clase para ocultar elementos */
+        }
+    </style>
+</head>
+<body>
+    <h1>Buscador de H3 con Autocompletado</h1>
+    <input type="text" id="searchInput" placeholder="Buscar...">
+    <ul id="results"></ul>
+    <ul id="autocomplete"></ul>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                    <h2 class="block-title text-center">
+                    Libro de Recetas
+                </h2>
+                    <p class="title-caption text-center">Bienvenidos a nuestra galería culinaria, donde cada imagen cuenta una historia y despierta los sentidos. En Cocina con Nosotros, celebramos la belleza de la cocina a través de fotografías vibrantes y llenas de vida. Desde la preparación de los ingredientes hasta el toque final en el plato, cada foto es una obra de arte que captura la esencia de nuestros platos. Sumérgete en nuestro mundo visual y encuentra inspiración en cada rincón de nuestra cocina. </p>
+                </div>
+                <div class="tab-menu">
+                    <div class="slider slider-nav">
+                        <div class="tab-title-menu">
+                            <h2>DESAYUNOS</h2>
+                            <p> <i class="flaticon-canape"></i> </p>
+                        </div>
+                        <div class="tab-title-menu">
+                            <h2>COMIDAS</h2>
+                            <p> <i class="flaticon-dinner"></i> </p>
+                        </div>
+                        <div class="tab-title-menu">
+                            <h2>POSTRES</h2>
+                            <p> <i class="flaticon-desert"></i> </p>
+                        </div>
+                        <div class="tab-title-menu">
+                            <h2>BEBIDAS</h2>
+                            <p> <i class="flaticon-coffee"></i> </p>
+                        </div>
+                    </div>
+                    <div class="slider slider-single">
+                        <div>
+                            <div >
+                                <div class="offer-item">
+                                    <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                    <div> <!--huevos-->
+                                        <section class="recipe">
+                                        <h3>HUEVO REVUELTO CON SALCHICHA</h3>
+                                        <p>
+                                            <strong> DIFICULTAD: Fácil <br></strong>
+                                            <strong>PORCIONES: 4<br></strong>
+                                            <strong>TIEMPO TOTAL: 15 min<br></strong>
+                                            El origen de los huevos revueltos es una historia muy curiosa, y poco conocida. Hay varias versiones, pero la más documentada dice que los inventó involuntariamente Francisco Lorín Colorado el 21 de marzo de 1667, en Villanueva de Alcardete (Toledo), era cocinero y estaba intentando hacer huevos fritos… pero padecía una forma avanzada de temblor esencial, al intentar darles la vuelta se le rompieron y revolvieron, a los clientes de la posada les gustó el resultado… y el resto es historia.<br>
+                                            <strong>INGREDIENTES<br></strong>
+                                            2 Cucharadas de aceite vegetal<br>
+                                            4 Salchichas, cortadas en rodajas<br>
+                                            8 Huevos<br>
+                                            1/2 Taza de Leche Evaporada<br> 
+                                            1/4 Cucharadita de sal con cebolla, en polvo<br>
+                                            <strong>PREPARACIÓN<br></strong>
+                                            1) En una sartén calienta el aceite y fríe las salchichas hasta que estén ligeramente doradas.<br>
+                                            2) Bate los huevos con la Leche Evaporada y la sal con cebolla.<br>
+                                            3) Agrega a la sartén y cocina durante 2 minutos o hasta que el huevo esté cocido.<br>
+                                            
+                                        </p>
+                                    </section>
+                                    </div>
+                                    
+                                </div>
+                                <div class="offer-item"> <!--cake-->
+                                    <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                    <div>
+                                        <section class="recipe">
+                                        <h3>HOT CAKES CLÁSICOS</h3>
+                                        <p>
+                                            <strong> DIFICULTAD: Fácil <br></strong>
+                                            <strong>PORCIONES: 6<br></strong>
+                                            <strong>TIEMPO TOTAL: 25 min<br></strong>
+                                            Los hot cakes, a veces también llamados y confundidos con los pancakes, se inventaron en Estados Unidos en el siglo XVIII en los conocidos "estados del sur", para salir a competir con los crêpes franceses y presentar su versión más gruesa y esponjosa. En su país de origen, los hot cakes se sirven a la hora del desayuno acompañados por miel y tocino, frutas y crema batida. Quienes se acostumbran a consumirlos no los cambian por ninguna otra opción. Es una constante verlos en publicidades y fotos de la mesa típica de todos los hogares.<br>
+                                            <strong>INGREDIENTES<br></strong>
+                                            3/4 Taza de Leche Evaporada CARNATION® CLAVEL®           <br>
+                                            1 Huevo <br>
+                                            2 Cucharadas de mantequilla, fundida                     <br>
+                                            1 Cucharadita de esencia de vainilla <br>
+                                            1 Taza de harina para hot cakes <br>
+                                            2 Cucharadas de mantequilla <br>
+                                            1/2 Taza de moras azules <br>
+                                            1/2 Taza de fresas, desinfectadas y cortadas en cuartos <br>
+                                            6 Hojas de menta, desinfectadas <br>
+                                            1 Envase de Leche Condensada <br>
+                                            
+                                            <strong>PREPARACIÓN<br></strong>
+                                            1) Mezcla la Leche Evaporada con el huevo, 2 cucharadas de mantequilla fundida, la esencia de vainilla y la harina para hot cakes.<br>
+                                            2) Calienta una sartén, agrega un poco de mantequilla y con ayuda de un cucharón vierte un poco de la mezcla para formar los hot cakes; cocina por ambos lados y repite el procedimiento con el resto de la preparación.<br>
+                                            3) Sirve los hot cakes, decora con moras azules, fresas, las hojas de menta y con un poco de Leche Condensada.<br>
+                                            
+                                        </p>
+                                    </section>
+                                    </div>
+                                    </div>
+                                    <div class="offer-item"> <!--chilaquiles-->
+                                        <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                        <div>
+                                            <section class="recipe">
+                                            <h3>CHILAQUILES RELLENOS CON QUESO</h3>
+                                            <p>
+                                                <strong> DIFICULTAD: Intermedio <br></strong>
+                                                <strong>PORCIONES: 6<br></strong>
+                                                <strong>TIEMPO TOTAL: 50 min<br></strong>
+                                                Los chilaquiles son un plato típico mexicano elaborado con totopos que se cocinan en una salsa picante, ya sea roja o verde dependiendo del tipo de chile usado. Suelen servirse como desayuno, y varían en sus métodos de preparación acatando a la región mexicana en donde sean cocinados. Puede contener otros ingredientes como carne de pollo o de res deshilachada, arrachera, carne enchilada, cecina, chorizo, huevos al gusto, quesillo, entre muchos otros. Se suele decorar con cilantro y cebolla y acompañar con una porción de frijoles.<br>
+                                                <strong>INGREDIENTES<br></strong>
+                                                300 Gramos de masa de maíz<br>
+                                                1/2 Cucharadita de sal<br>
+                                                1 Cucharada de manteca de cerdo<br>
+                                                1 1/2 Tazas de queso Oaxaca<br>
+                                                Aceite vegetal para freir<br>
+                                                2 Chiles guajillo sin semillas y remojados en agua caliente<br>
+                                                3 Chiles de árbol secos sin semillas y remojados en agua caliente<br>
+                                                3 Jitomates fritos<br>
+                                                1/4 De pieza de cebolla frita<br>
+                                                1 Dientes de ajo frito<br>
+                                                2 Cubos de Concentrado de Tomate con Pollo<br>
+                                                3 Tazas de agua<br>
+                                                1/2 Pechuga de pollo cocida y deshebrada (300 g)<br>
+                                                1 Envase de Media Crema refrigerada (190 g)<br>
+                                                1/4 De pieza cebolla morada fileteada<br>
+                                                1/2 Taza de queso cotija rallado<br>
+                                                5 Ramas de cilantro desinfectado y picado finamente<br>
+                                                
+                                                
+                                                <strong>PREPARACIÓN<br></strong>
+                                                1) Mezcla la masa, la sal y la manteca de cerdo hasta integrar por completo. Forma bolitas de 35 g c/u y con ayuda de una máquina manual para tortillas, aplástalas para formar las tortillas.<br>
+                                                2) Corta a la mitad las tortillas, rellénalas con el queso Oaxaca, dobla en forma de triángulo y sella las orillas. Fríe en el aceite caliente hasta que doren ligeramente y colócalos sobre papel absorbente para retirar el exceso de grasa.<br>
+                                                3) Para la salsa, licúa los chiles, los jitomates, la cebolla frita, el ajo, el Concentrado de Tomate con Pollo y una taza de agua; cuela. Calienta lo que licuaste con el resto del agua hasta que hierva, añade los totopos a la salsa y cocina por dos minutos. Sirve, decora con el pollo, la Media Crema, la cebolla morada, el queso Cotija y el cilantro.<br>
+                                                                                                    
+                                            </p>
+                                        </section>
+                                        </div>
+                                        </div>
+
+                                    <div class="offer-item"> <!--pan-->
+                                        <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                        <div>
+                                            <section class="recipe">
+                                            <h3>PAN FRANCÉS</h3>
+                                            <p>
+                                                <strong> DIFICULTAD: Fácil <br></strong>
+                                                <strong>PORCIONES: 8<br></strong>
+                                                <strong>TIEMPO TOTAL: 25 min<br></strong>
+                                                El pan francés en realidad deriva de su versión francesa conocida como “pain perdu”, o “pan perdido” y se trata de un postre tradicional de la Semana Santa en la región de Bretaña. Ahí lo común es prepararlo con pan seco o lo que conocemos como pan frío o duro–, que se sumerge en una mezcla de huevo, leche y azúcar, que posteriormente se sofríe en un sartén con un poco de mantequilla por ambos lados y se sirve con un caramelo de mantequilla salada. ¿El resultado? Deliciosas tostadas ligeras, suaves al interior y crujientes al exterior con una salsa tersa. Se dice que de hecho, su origen no es francés, ya que se han encontrado menciones sobre este pan en las recetas de Apicius, es decir, durante el Imperio romano en el Siglo V, aunque en ese entonces no se integraba huevo en la receta. Lo cierto es que en toda Europa este platillo fue común entre campesinos con la finalidad de aprovechar el pan duro de una forma un poco más nutritiva. Una de las versiones famosas de este pan son las torrijas que se preparan en España como postre.<br>
+                                                <strong>INGREDIENTES<br></strong>
+                                                3/4 De taza de Leche Evaporada<br>
+                                                1 Huevo<br>
+                                                1 Cucharada de esencia de vainilla<br>
+                                                1/2 Barra de mantequilla (45 g)<br>
+                                                8 Rebanadas de pan de caja blanco sin orillas<br>
+                                                1 Envase de Leche Condensada<br>
+                                                1 1/2 Taza de frutos rojos<br>
+                                                1 Cucharada de canela molida<br>
+                                                
+                                                
+                                                <strong>PREPARACIÓN<br></strong>
+                                                1) Mezcla la Leche Evaporada con el huevo y la vainilla hasta integrar por completo.<br>
+                                                2) En una sartén caliente, funde un poco de mantequilla, humedece cada rebanada de pan con la mezcla de Leche Evaporada y cocina por ambos lados hasta que dore ligeramente.<br>
+                                                3) Corta cada rebanada por la mitad, sirve y decora con un poco de Leche Condensada, frutos rojos y canela.<br>
+                                                                                                    
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="offer-item"> <!--tortilla-->
+                                        <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                        <div>
+                                            <section class="recipe">
+                                        <h3>TOSTAS DE TOMATE Y MOZZARELLA CON MORTADELA</h3>
+                                        <p>
+                                            <strong> DIFICULTAD: Fácil <br></strong>
+                                            <strong>PORCIONES: 6<br></strong>
+                                            <strong>TIEMPO TOTAL: 20 min<br></strong>
+                                            Las tostadas son un platillo que forma parte de nuestra dieta desde la época prehispánica y que actualmente aún son una parte importante de la alimentación. Las tostadas tienen su origen en las culturas indígenas que habitaban en territorio mexicano; para prepararlas dejaban la tortilla al fuego hasta que quedara rígida y crocante, después las comían con frijoles y chile. Con la llegada de los españoles, se integraron a la receta ingredientes como la pata, el pollo, la crema y el queso; dando así origen a la tostada que conocemos actualmente.<br>
+                                            <strong>INGREDIENTES<br></strong>
+                                            6 rebanadas grandes de pan de hogaza<br>
+                                            6 tomates en rama (u otra variedad sabrosa)<br>
+                                            3 mozzarella frescos<br>
+                                            12 lonchas de mortadela de Bolonia<br>
+                                            Aceite de oliva virgen extra<br>
+                                            Alcaparras<br>
+                                            Pimienta negra molida<br>
+                                            Sal gorda<br>
+
+                                            
+                                            
+                                            <strong>PREPARACIÓN<br></strong>
+                                            1) Cortar las rebanadas de pan, de aproximadamente un dedo de grosor.<br>
+                                            2) Pintar ligeramente con aceite de oliva y tostar al gusto o dejar tal cual.<br>
+                                            3) Cortar el tomate en rodajas no muy gruesas.<br>
+                                            4) Escurrir el líquido de la mozzarella y cortar en lonchas de más o menos el mismo tamaño.<br>
+                                            5) Distribuir dos o tres rodajas de tomate sobre el pan y añadir un poco de sal gruesa.<br>
+                                            6) Colocar encima la mozzarella, añadir pimienta negra y regar con un hilo de aceite de oliva.<br>
+                                            7) Disponer encima las lonchas de mortadela de Bolonia, doblándolas sobre sí mismas.<br>
+                                            8) Coronar con unas alcaparras escurridas y agregar un poco más de pimienta o de aceite de oliva al gusto si se desea.<br>
+                                            9) NOTA: Servir preferiblemente en el momento, aunque se pueden guardar unas horas en la nevera bien tapadas.<br>
+                                                                                        </p>
+                                                                                    </section>
+                                    </div>
+                                </div>
+                            </div>
+                           <!--desayunos end-->                                
+                        </div>
+                        <div>
+                            <div>
+                                <div class="offer-item">
+                                    <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                    <div>
+                                        <section class="recipe">
+                                        <h3>Cordón Bleu</h3>
+                                       
+<div class="recipe-info">
+    <p><strong>Dificultad:</strong> Fácil</p>
+    <p><strong>Porciones:</strong> 6</p>
+    <p><strong>Tiempo Total:</strong> 32 min</p>
+</div>
+<p>Esa cinta azul o 'cordon bleu' servía también para referirse a aquellos cocineros que sorprendían por su alto nivel a una monarquía muy acostumbrada a los suculentos banquetes en el palacio. Uno de éstos optó por alterar una forma de preparar la carne tan típica francesa como es el escalope: un filete fino empanado. Por ello, utilizó jamón, queso gruyere y dos filetes para inventar un suculento plato que encantó a los comensales y que, como reconocimiento, se bautizó con el mismo nombre que tan importante distinción. Aquella receta fue tremendamente popular en Francia y, con el paso del tiempo, ha evolucionado dentro y fuera de sus fronteras.</p>
+
+<h2>Ingredientes</h2>
+<ul>
+    <li>3 pechugas de pollo</li>
+    <li>6 lonchas de jamón cocido</li>
+    <li>6 lonchas de queso suizo (Emmental, Gruyere o el queso que más os guste)</li>
+    <li>Para rebozar: Huevo y pan rallado</li>
+    <li>Sal y pimienta negra recién molida (al gusto)</li>
+</ul>
+
+<h2>Preparación</h2>
+<ol>
+    <li>Abrimos la pechuga de pollo a modo de libro, o le pedimos a nuestro carnicero que nos la prepare. Colocamos la pechuga de pollo entre dos papeles transparentes y con un mazo la golpeamos para aplanarla y alisarla. Este paso es importante ya que así conseguimos una lámina de carne más homogénea en grosor en toda su superficie.</li>
+    <li>Retiramos el papel transparente de la parte superior del filete de pollo y mantenemos el inferior. Este nos servirá de ayuda después para hacer el rollo.</li>
+    <li>Salpimentamos el pollo y lo cubrimos con el jamón cocido. Colocamos encima el queso y, con la ayuda del papel transparente, hacemos un rollo con la carne. Retiramos el papel transparente y aseguramos la carne para que no se nos abra, con unos palillos.</li>
+    <li>Rebozamos el rollo de pollo pasándolo primero por huevo batido y luego por pan rallado y reservamos.</li>
+    <li>Calentamos un chorrito de aceite de oliva en una sartén y doramos los rollos de pollo por todas sus caras. Se trata de conseguir una cocción inicial del cordon bleu, no es necesario que se pasen demasiado ya que terminaremos el proceso en el horno.</li>
+    <li>Colocamos los rollos de pollo en una bandeja y, con el horno previamente caliente a 180º C, horneamos durante unos 20 minutos, hasta que vemos que están doraditos.</li>
+    <li>Podemos servir el cordon bleu de pollo frío o caliente. Si dejamos que se enfríe serán más fáciles de cortar en rodajitas sin que se rompan. En cualquier caso, estarán perfectos acompañados de una crema de verduras o una simple ensalada.</li>
+</ol>
+</section>
+                                    </div>
+                                </div>
+                                <div class="offer-item">
+                                    <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                    <div>
+                                        <section class="recipe">
+                                        <h3>Rāmen</h3>
+                                        <div class="recipe-info">
+                                            <p><strong>Dificultad:</strong> Difícil</p>
+                                            <p><strong>Porciones:</strong> 4</p>
+                                            <p><strong>Tiempo Total:</strong> 210 min</p>
+                                        </div>
+                                        <p>Los rāmen, un plato cuyas primeras versiones se originaron en China, toman su nombre actual de los lamians "fideos estirados", que son fideos de trigo hechos a mano por el cocinero. A finales del siglo XIX y principios del siglo XX, los rāmen fueron importados realmente a Japón por inmigrantes chinos que vivían en el barrio de Yokohama. Fue en Yokohama donde se estableció la primera tienda de rāmen, operada por inmigrantes chinos. Esta tienda ofrecía una sopa con fideos chinos en caldo, acompañados de cerdo asado, brotes de bambú y un huevo duro. En aquel entonces, estos fideos eran conocidos como "soba chino". Sin embargo, en la actualidad, los rāmen son considerados un plato japonés.</p>
+                                        
+                                        <h2>Ingredientes</h2>
+                                        <ul>
+                                            <li>180 gr de fideos tipo ramen o noodles</li>
+                                            <li>750 gr de carcasas de pollo</li>
+                                            <li>200 gr de panceta</li>
+                                            <li>1 cebolleta</li>
+                                            <li>1 zanahoria</li>
+                                            <li>2 dientes de ajo</li>
+                                            <li>2 setas shitake</li>
+                                            <li>80 gr de brotes de soja</li>
+                                            <li>2 huevos</li>
+                                            <li>Jengibre fresco</li>
+                                            <li>Aceite de oliva virgen extra de España</li>
+                                            <li>2 cucharadas de salsa de soja</li>
+                                            <li>1 cucharadita de azúcar moreno</li>
+                                            <li>Agua</li>
+                                            <li>Sal</li>
+                                        </ul>
+                                    
+                                        <h2>Preparación</h2>
+                                        <ol>
+                                            <li>Calienta un chorro de aceite de oliva español en una olla a fuego medio-alto. Sella el trozo de panceta por todos lados, hasta que esté dorada y después, retíralo.</li>
+                                            <li>Lava las verduras para que no tengan restos de tierra y pélalas. Pica bien el tallo verde de la cebolleta y después introdúcelo todo en la olla: la cebolleta, la zanahoria, un diente de ajo y las setas.</li>
+                                            <li>Añade las carcasas de pollo, el trozo de panceta y un poco de sal. Cúbrelo todo con agua y ponlo al fuego hasta que empiece a hervir.</li>
+                                            <li>Una vez llegue a ebullición, déjalo cocer 45 minutos a fuego lento. Saca y reserva la panceta y las setas. Desecha las carcasas de pollo y desgrasa el caldo. Déjalo reposar.</li>
+                                            <li>Es el momento de hacer los huevos. Cuécelos durante 6-7 minutos y después, sácalos del cazo y ponlos en agua fría para cortar la cocción y poder pelarlos fácilmente.</li>
+                                            <li>De nuevo en un cazo, añade un diente de ajo picado, un par de laminitas de jengibre fresco, una cucharada de AOVE, el azúcar moreno y la salsa de soja. Mézclalo todo.</li>
+                                            <li>Añade al cazo los dos huevos ya pelados y cúbrelos con agua hasta más o menos la mitad. Ponlo al fuego y, cuando llegue a ebullición, apágalo.</li>
+                                            <li>Deja reposar 2 horas, moviéndolo todo un poco de vez en cuando. Reserva el marinado.</li>
+                                            <li>Pon a calentar el caldo hasta que hierva. Mientras, cuece los fideos ramen y trocea la panceta, los huevos, las setas y las verduras.</li>
+                                            <li>Llega el momento de emplatar: pon un par de cucharadas del marinado en cada plato. Después, añade caldo, fideos, verduras, panceta, huevo y unos brotes de soja.</li>
+                                        </ol>
+                                    </section>
+                                    </div>
+                                </div>
+                                <div class="offer-item">
+                                    <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                    <div>
+                                        <section class="recipe">
+                                        <h3>Tacos al Pastor</h3>
+<div class="recipe-info">
+    <p><strong>Dificultad:</strong> Intermedio</p>
+    <p><strong>Porciones:</strong> 8</p>
+    <p><strong>Tiempo Total:</strong> 320 min</p>
+</div>
+<p>Pues se dice que este delicioso platillo es de origen mexicano, pero la realidad fue traído por libaneses, ya que en dicho país se elabora el shawuarma que se podría considerar como su primo hermano. La diferencia radica en que este platillo se realiza con carne de cordero la cual se pastorea en asadores para prepararlos y de ahí proviene el nombre “Al Pastor”, del término pastorear. Se llama así por su estructura y porque se parece al tradicional juguete mexicano “el trompo”, ya que se forma por filetes delgados de cerdo empalmados en un asador vertical, previamente marinados y sazonados, con los que está conformado este platillo. Se ensarta apilándolos en una estaca de hierro que gira verticalmente asemejando al trompo y se cocina lentamente girando frente a un fuego, también de forma vertical, de la manera en que se dice los pastores lo hacían tradicionalmente en el campo.</p>
+
+<h2>Ingredientes</h2>
+<h2>Para la marinada:</h2>
+<ul>
+    <li>150 ml de jugo de naranja que sea natural, y mejor si es de naranja agria.</li>
+    <li>80 ml de vinagre: de preferencia uno suave como de caña, de manzana, o de vino diluido.</li>
+    <li>1 cebolla (si es muy grande, utilizar solo la mitad)</li>
+    <li>2 dientes de ajo</li>
+    <li>Una pizca de sal</li>
+    <li>1 cucharadita de orégano</li>
+    <li>1 cucharadita de comino</li>
+    <li>1 cucharadita de pimienta blanca o negra</li>
+    <li>20 granos de achiote</li>
+    <li>1 clavo de olor</li>
+    <li>7 chiles rojos pequeños (picante o no picante según el gusto).</li>
+</ul>
+
+<h2>Para el resto del taco:</h2>
+<ul>
+    <li>Tortillas de maíz (la cantidad depende del relleno que se quiera poner dentro de cada taco).</li>
+    <li>2 cebollas</li>
+    <li>1 ramo de cilantro</li>
+    <li>Salsa para tacos al gusto. Puede ser verde o roja, picante o no picante.</li>
+    <li>1 piña</li>
+    <li>1/2 kg de lomo de cerdo (también puedes usar pierna o carne de cabeza)</li>
+    <li>1 plato de limones partidos por la mitad</li>
+</ul>
+
+<h2>Preparación</h2>
+<ol>
+    <li>Cortar el cerdo en tiras pequeñas o láminas delgadas (no es necesario que cubran el ancho de la pieza. Lo ideal es que sean pequeñas).</li>
+    <li>Abrir con un cuchillo los chiles para retirar las semillas y la vena.</li>
+    <li>Sumergir los chiles en agua caliente, por varios minutos, para que se ablanden.</li>
+    <li>Lavar la cebolla, pelar y cortar en trozos. También pelar el ajo.</li>
+    <li>Licuar todos los ingredientes de la marinada.</li>
+    <li>Disponer la marinada y los trozos de carne en un recipiente. Añadir un poco de agua si hace falta líquido para que se remoje cada trozo. Dejar reposar en el refrigerador por algunas horas, idealmente.</li>
+    <li>Antes de retomar la cocción de la carne, lavar el cilantro y picar en pequeños trozos.</li>
+    <li>Pelar también la cebolla y la piña. Picar la primera en pequeños cubos y la segunda en pequeñas rebanadas.</li>
+    <li>La cocción de la carne se hace tradicionalmente en trompo, pero para efectos caseros, se puede hacer en horno o a la plancha. Yo prefiero la plancha. Lo que hay que hacer es calentarla a fuego alto para una cocción rápida; así no se pierde mucho jugo.</li>
+    <li>Depositar los trozos de cerdo marinados sobre la plancha, tratando de que no se superpongan. Vigilar porque el color va a cambiar en muy poco tiempo a causa de la cocción rápida. Dependiendo del tamaño de la plancha será la cantidad de carne dispuesta simultáneamente. Es posible que haya que realizar varias cocciones.</li>
+    <li>Mover los trozos para que se cocinen de ambos lados, sin dejar de vigilar.</li>
+    <li>Sacar la carne de la plancha y reservar. Luego bajar el fuego y colocar las tortillas en la plancha, para que se calienten y suavicen con la grasa de la carne. Dejarlas solo lo suficiente para calentarse, sin que se endurezcan. Voltear para calentar los dos lados.</li>
+    <li>Después de sacar cada tortilla del calor, acomodarla sobre un plato, totalmente abierta. De acuerdo con el tamaño habitual de las tortillas de maíz mexicanas, en un plato normalmente caben cinco.</li>
+    <li>Distribuir carne por encima de las tortillas. La idea es que quede de tal forma que cada tortilla pueda tomarse con sus extremos entre el dedo índice y el pulgar, quedando doblada con el relleno adentro.</li>
+    <li>Esparcir sobre la carne un poco de cebolla y cilantro picados. Añadir pequeñas rebanadas de piña.</li>
+    <li>Servir acompañado de los limones y de salsa (picante o no picante). Los limones se utilizan para que cada quien exprima un pedazo sobre sus tacos. El limón es muy utilizado como condimento en la gastronomía mexicana.</li>
+</ol>
+</section>
+                                    </div>
+                                </div>
+                                <div class="offer-item">
+                                    <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                    <div>
+                                        <section class="recipe">
+                                        <h3>Pizza de Pepperoni</h3>
+<div class="recipe-info">
+    <p><strong>Dificultad:</strong> Fácil</p>
+    <p><strong>Porciones:</strong> 1</p>
+    <p><strong>Tiempo Total:</strong> 122 min</p>
+</div>
+<p>Muchos autores afirman que la pizza, tal y como se conoce en la actualidad, procede de la ciudad de Nápoles (Italia) y aparece como plato popular entre los napolitanos, en algún instante no definido del siglo XVII. Es pues que la pizza nace de un alimento elaborado por los habitantes humildes de la ciudad de Nápoles y la composición no fuera tan variada como la actual. Los panes planos y las preparaciones fundamentadas en ellos, como la pizza, son típicos de las cocinas mediterráneas. De esta manera, se tiene la antigua "focaccia" (alimento muy popular entre los soldados romanos) que se remonta a los antiguos etruscos, la coca (que posee variantes dulces y saladas) de la cocina española, el pan pita griego y relacionado con la turca "pide" y la africana injera. Panes similares existen fuera del área del mediterráneo, entre ellos se encuentra el indio "paratha" y el alemán "flammkuchen". La existencia de estas variantes locales ha hecho que la denominación de la «pizza» haya quedado diluida en una infinidad de variantes regionales.</p>
+
+<h2>Ingredientes</h2>
+<h2>Salsa para pizza:</h2>
+<ul>
+    <li>1 cucharadita de mantequilla sin sal</li>
+    <li>1/2 cucharadita de aceite de oliva</li>
+    <li>1 1/2 cucharadas de cebolla blanca picada</li>
+    <li>1/4 de cucharadita de ajo, machacado</li>
+    <li>1/2 taza de puré de tomate enlatado</li>
+    <li>1/2 cucharadita de orégano seco</li>
+    <li>1 cucharadita de azúcar granulada</li>
+    <li>1/8 cucharadita de sal Kosher</li>
+    <li>1/2 cucharadita de albahaca fresca, picada</li>
+</ul>
+
+<h4>Pizza:</h2>
+<ul>
+    <li>2 cucharadas de harina para todo uso</li>
+    <li>1 cucharada de harina de maíz amarilla</li>
+    <li>8 oz. de masa preparada para pizza</li>
+    <li>1 cucharadita de aceite de oliva</li>
+    <li>25 rebanadas de Pepperoni</li>
+    <li>1 paquete (7.6 oz.) de Queso Quesadilla Rallado</li>
+    <li>1/2 cucharadita de hierbas italianas secas</li>
+</ul>
+
+<h2>Preparación</h2>
+<ol>
+    <li>Coloca la piedra para pizza en el horno frío. Precalienta el horno a 500°F.</li>
+    <li>Precalienta una cacerola pequeña por 1 minuto a fuego medio-bajo; añade la mantequilla y el aceite de oliva. Derrite la mantequilla. Agrega la cebolla, el ajo y cocina por 1 minuto.</li>
+    <li>Agrega el puré de tomate, orégano, azúcar, sal, y albahaca. Cocina a fuego lento por 2 minutos, revolviendo ocasionalmente. Apaga el fuego y pon a un lado.</li>
+    <li>Espolvorea la mitad de las harinas en una superficie limpia. Estira la masa para la pizza en forma de un círculo de aproximadamente 12 pulgadas. Espolvorea la harina de maíz en la parte superior de la pala para pizza.</li>
+    <li>Unta aproximadamente ½ pulgada del borde de la masa con 1 cucharadita de aceite de oliva.</li>
+    <li>Añade la salsa de tomate en el centro de la pizza. En movimiento circular, unta la salsa dejando un borde de ½ pulgada. Coloca el pepperoni sobre la salsa. Agrega el Queso Quesadilla sobre el Pepperoni y espolvorea las hierbas italianas.</li>
+    <li>Transfiere la pizza a la piedra para pizzas precalentada en el horno. Hornea de 7 a 9 minutos o hasta que el queso se haya derretido y esté ligeramente dorado.</li>
+    <li>Retira la pizza con Queso Quesadilla y Pepperoni del horno, deja enfriar durante 1 minuto. ¡Sirve y disfruta!</li>
+    <li>Nota: No remuevas la piedra para pizzas caliente del horno. Deja que se enfríe en el horno apagado, ya que la piedra se puede quebrar si no se enfría lentamente.</li>
+</ol>
+</section>
+                                    </div>
+                                </div>
+                                <div class="offer-item">
+                                    <center><img src="images/Nueva carpeta/photo_2024-11-03_17-02-12 (2).jpg" alt="centered image" class="img-responsive"></center>
+                                    <div>
+                                        <section class="recipe">
+                                        <h3>Pollo Parmesano</h3>
+                                        <div class="recipe-info">
+                                            <p><strong>Dificultad:</strong> Fácil</p>
+                                            <p><strong>Porciones:</strong> 4</p>
+                                            <p><strong>Tiempo Total:</strong> 35 min</p>
+                                        </div>
+                                        <p>El pollo parmesano, o pollo a la parmesana (italiano: pollo alla parmigiana), es un plato que consiste en pechuga de pollo empanada cubierta con salsa de tomate y queso mozzarella, parmesano o provolone. A veces se agrega una loncha de jamón o tocino. También se le conoce coloquialmente en los Estados Unidos como pollo parm y en Australia como parma, parmi o parmy. El plato se originó en la diáspora italiana del siglo XX.</p>
+                                    
+                                        <h2>Ingredientes</h2>
+                                        <ul>
+                                            <li>4 pechugas de pollo sin hueso, sin piel (aproximadamente 1/4 lb)</li>
+                                            <li>1/4 taza de pan molido Progresso</li>
+                                            <li>2 cucharadas de queso Parmesano rallado</li>
+                                            <li>1 cucharadita de ajo en polvo</li>
+                                            <li>1 cucharadita de hojas secas de albahaca</li>
+                                            <li>1 huevo</li>
+                                            <li>1 cucharadita de aceite de oliva</li>
+                                            <li>1 lata (19 oz) de sopa de jitomate Progresso® Vegetable Classics hearty tomato soup</li>
+                                            <li>1/4 taza de queso mozzarella rallado (1 oz)</li>
+                                        </ul>
+                                    
+                                        <h2>Instrucciones</h2>
+                                        <ol>
+                                            <li>Entre dos piezas de papel encerado o plástico, coloca las pechugas de pollo y suavemente aplánalas con un aplanador de carne o un rodillo hasta que queden de un grosor de 1/4 de pulgada.</li>
+                                            <li>En un plato hondo chico, combina el pan molido, el queso Parmesano, el ajo en polvo y la albahaca. En otro plato hondo chico, bate el huevo con un tenedor o batidor de globo. Sumerge las pechugas de pollo en el huevo y luego pásalas, oprimiéndolas sobre la mezcla de pan molido.</li>
+                                            <li>En un sartén de 12 pulgadas de diámetro, calienta el aceite a fuego medio. Sofríe las pechugas de pollo sin tapar de 5 a 7 minutos, volteándolas una sola vez hasta que no se encuentren rosas en el centro. Retíralas del sartén y mantenlas tibias o calientes.</li>
+                                            <li>Agrega la sopa en el mismo sartén; calienta hasta que hierva a fuego medio-alto. Hierve sin tapar el sartén de 4 a 5 minutos, revolviendo ocasionalmente, hasta que espese un poco.</li>
+                                            <li>Coloca de nuevo el pollo en el sartén. Disminuye el fuego a bajo; espolvorea el queso mozzarella sobre el pollo. Cubre y cocina durante 2 a 3 minutos más o hasta que el pollo esté gratinado o derretido.</li>
+                                        </ol>
+                                    </section>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--comidas-->
+                        <div>
+                            <div>
+                                <div class="offer-item">
+                                    <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                    <div> 
+                                        <section class="recipe">
+                                        <h3>Arroz con Leche</h3>
+                                        <div class="recipe-info">
+                                            <p><strong>Dificultad:</strong> Intermedio</p>
+                                            <p><strong>Porciones:</strong> 6</p>
+                                            <p><strong>Tiempo Total:</strong> 50 min</p>
+                                        </div>
+                                        <p>El arroz con leche es un postre típico de la gastronomía de múltiples países hecho cociendo lentamente arroz con leche y azúcar. Se sirve frío o caliente y se le suele espolvorear canela, vainilla o cáscara de limón por encima para aromatizarlo. Tiene orígenes muy antiguos en Asia y luego se difundió a través de Europa y África. A partir del siglo XV y XVI, tras la colonización, se exportó a América debido al comercio y población europea que emigraba al territorio americano.</p>
+                                    
+                                        <h2>Ingredientes</h2>
+                                        <ul>
+                                            <li>1/2 taza de arroz</li>
+                                            <li>2 tazas de agua</li>
+                                            <li>1 1/2 taza de leche</li>
+                                            <li>1 taza de azúcar</li>
+                                            <li>Esencia de vainilla o ralladura de limón</li>
+                                            <li>Canela molida</li>
+                                        </ul>
+                                    
+                                        <h2>Instrucciones</h2>
+                                        <ol>
+                                            <li>En una cazuela, poner a cocinar el arroz en agua. De vez en cuando, remover para que no se pegue al fondo de la cazuela (20 min). Si al cabo de ese tiempo el arroz está un poco duro, agregar un poco más de agua. Cuando esté bien blando, de manera que quede casi como papilla, agregar la leche y el azúcar.</li>
+                                            <li>Dejar cocinar por 10 min aproximadamente hasta que cuaje (siempre removerlo con una cuchara para que no se pegue al fondo). Cuando esté bien cuajado, retirar del fuego y agregar la vainilla y disolverla (si desea echarle la ralladura de limón, debe ser junto a la leche y el azúcar). Luego, rociarle canela en polvo y listo, que lo disfruten.</li>
+                                        </ol>
+                                    </section>
+                                    </div>
+                                
+                                </div>
+                                <section class="recipe">
+                                <div class="offer-item">
+                                    <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                    <div>
+                                        <h3>Flan</h3>
+                                        <div class="recipe-info">
+                                            <p><strong>Dificultad:</strong> Intermedio</p>
+                                            <p><strong>Porciones:</strong> 6</p>
+                                            <p><strong>Tiempo Total:</strong> 63 min</p>
+                                        </div>
+                                        <p>El flan es un postre de origen romano elaborado con una natilla teniendo como ingredientes principales yemas de huevos, un poco de clara a veces, leche entera y azúcar que luego es refrigerado para obtener una textura cremosa y gelatinosa. Su origen se remonta a siglos antes de Cristo, y ya era elaborado con huevo como ingrediente principal de la receta, por fenicios, griegos y romanos, que entonces lo llamaban Tyropatina. Aunque fue a partir del siglo VII que empezó a popularizarse en Francia con el nombre de flan.</p>
+                                    
+                                        <h2>Ingredientes</h2>
+                                        <h2>Caramelo:</h2>
+                                        <ul>
+                                            <li>3/4 taza de azúcar</li>
+                                            <li>1/4 taza de agua</li>
+                                        </ul>
+                                        <h2>Natillas:</h2>
+                                        <ul>
+                                            <li>5 huevos</li>
+                                            <li>1 lata (12 oz) de leche evaporada</li>
+                                            <li>1 lata (14 oz) de leche condensada azucarada</li>
+                                            <li>1 cucharada de vainilla</li>
+                                            <li>1/2 taza de azúcar</li>
+                                        </ul>
+                                    
+                                        <h2>Instrucciones</h2>
+                                        <ol>
+                                            <li>Caliente el horno a 350°F.</li>
+                                            <li>Coloque 3/4 taza de azúcar y 1/4 taza de agua en una cacerola mediana a fuego medio-alto. Agite la sartén cada pocos minutos, pero no revuelva. Caliente hasta que el azúcar se derrita uniformemente. Cocine el caramelo hasta que se dore. El caramelo continuará cocinándose incluso cuando se retire del fuego, así que asegúrese de quitarlo antes de que alcance el color deseado.</li>
+                                            <li>Vierta el caramelo en un molde para pastel redondo antiadherente de 8 pulgadas. Extienda con cuidado el caramelo dentro del molde para hornear hasta que cubra los lados. Deje enfriar.</li>
+                                            <li>Coloque los huevos en el recipiente de la licuadora. Cubra y mezcle durante unos segundos. Agregue la leche evaporada y mezcle. Agregue la leche condensada y mezcle. Agregue la vainilla y 1/2 taza de azúcar y continúe mezclando hasta que esté bien combinado y el azúcar se disuelva, aproximadamente de 1 a 2 minutos.</li>
+                                            <li>Colar la mezcla de huevos a través de un colador de malla fina. Vierta la mezcla colada en el molde para pasteles sobre el caramelo. Cubra el molde para pasteles con papel de aluminio.</li>
+                                            <li>Coloque el molde para pasteles cubierto en un molde para asar grande. Coloque la sartén para asar en su horno. Vierta agua caliente en el molde para asar hasta aproximadamente la mitad de los lados del molde para pasteles. Hornee durante 45 minutos o hasta que una brocheta o cuchillo insertado a medio camino entre el centro y el borde salga limpio. El flan debe estar firme pero aún tener algo de movimiento.</li>
+                                            <li>Retire con cuidado el asador del horno. Retire el molde para pasteles del baño de agua y colóquelo sobre una rejilla. Enfríe completamente.</li>
+                                            <li>Utilice una pequeña espátula o cuchillo de metal alrededor del borde del flan enfriado para aflojarlo del molde. Coloque un plato para servir con el borde boca abajo sobre el molde. Voltee y golpee suavemente hasta que sienta que se suelta el flan. Reserve el caramelo extra que quede en el molde para servir. Refrigere hasta que esté listo para servir. Para servir, rocíe con el caramelo reservado. Conservar en el frigorífico.</li>
+                                        </ol>
+                                    
+                                    </div>
+                                 
+                                </div>
+                            </section>
+                            <section class="recipe">
+                                <div class="offer-item">
+                                    <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                    <div>
+                                        <h3>Panqué de Zanahoria y Coco</h3>
+<div class="recipe-info">
+    <p><strong>Dificultad:</strong> Intermedio</p>
+    <p><strong>Porciones:</strong> 8</p>
+    <p><strong>Tiempo Total:</strong> 82 min</p>
+</div>
+<p>El pastel de zanahoria o tarta de zanahoria es un pastel dulce con zanahoria machacada mezclada en la masa. La zanahoria se ablanda en el proceso de cocción, y la tarta suele tener una textura densa y suave. Las zanahorias mejoran el sabor, textura y apariencia del pastel. La zanahoria se ha usado en pasteles dulces desde la Edad Media, época en la que los endulzantes eran escasos y caros, mientras que la zanahoria, que contiene más azúcar que cualquier otra verdura a excepción de la remolacha azucarera, era mucho más fácil de encontrar, por lo que se usaba para elaborar postres dulces. La popularidad del pastel de zanahoria resurgió probablemente en el Reino Unido gracias al racionamiento durante la Segunda Guerra Mundial.</p>
+
+<h2>Ingredientes</h2>
+<ul>
+    <li>1/4 taza de aceite de oliva</li>
+    <li>1/2 taza de azúcar mascabado</li>
+    <li>2 huevos</li>
+    <li>1/2 taza de alimento a base de coco CARNATION® CLAVEL®</li>
+    <li>1 cucharadita de esencia de vainilla</li>
+    <li>1 1/2 cucharaditas de canela molida</li>
+    <li>1/2 cucharadita de sal</li>
+    <li>1 3/4 tazas de harina</li>
+    <li>1 cucharadita de polvo para hornear</li>
+    <li>2 tazas de zanahorias ralladas</li>
+    <li>1 1/2 barras de margarina a temperatura ambiente (90 g c/u)</li>
+    <li>1/2 taza de azúcar glass</li>
+    <li>1/2 cucharadita de esencia de vainilla</li>
+    <li>4 cucharadas de alimento a base de coco CARNATION® CLAVEL®</li>
+    <li>1/2 taza de coco rallado</li>
+</ul>
+
+<h2>Preparación</h2>
+<ol>
+    <li>Horno precalentado a 180 °C.</li>
+    <li>Mezcla el aceite de oliva, el azúcar, los huevos, el alimento a base de coco, la esencia de vainilla, la canela, la sal, la harina y el polvo para hornear hasta incorporar. Agrega la zanahoria rallada y vierte sobre un molde para panqué. Hornea a 180 °C durante 45 a 50 minutos.</li>
+    <li>Para el betún, mezcla la margarina, el azúcar glass, la esencia de vainilla y el alimento a base de coco. Refrigera por 15 minutos.</li>
+    <li>Decora el panqué con el betún y el coco.</li>
+</ol>
+                                    </div>
+                                   
+                                </div>
+                            </section>
+                            <section class="recipe">
+                                <div class="offer-item">
+                                    <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                    <div><h3>Crêps de Dulce de Leche</h3>
+                                        <div class="recipe-info">
+                                            <p><strong>Dificultad:</strong> Fácil</p>
+                                            <p><strong>Porciones:</strong> 4</p>
+                                            <p><strong>Tiempo Total:</strong> 20 min</p>
+                                        </div>
+                                        <p>Se cree que los crêpes tienen sus raíces en la antigua Grecia y Roma, donde se preparaban panqueques similares con harina de trigo, leche y huevos. Sin embargo, los crêpes tal como los conocemos hoy en día se originaron en Francia en el siglo XIII, donde eran conocidos como «galettes». Estos crêpes de harina de trigo se cocinaban en sartenes planas y se rellenaban con carne, verduras y otros ingredientes. En la Bretaña, una región francesa, los crêpes se convirtieron en un plato popular durante las festividades de la Candelaria, una tradición religiosa que se celebra el 2 de febrero. Durante esta festividad, se cocinaban crêpes y se lanzaban al aire con la mano derecha mientras se sostenía una moneda en la mano izquierda, simbolizando la prosperidad y la buena fortuna para el año venidero.</p>
+                                    
+                                        <h2>Ingredientes</h2>
+                                        <ul>
+                                            <li>1 taza de harina de trigo</li>
+                                            <li>1 taza de Leche Evaporada CARNATION® CLAVEL®</li>
+                                            <li>1 cucharada de mantequilla fundida</li>
+                                            <li>2 huevos</li>
+                                            <li>1 cucharada de azúcar</li>
+                                            <li>1 pizca de sal</li>
+                                            <li>1 cucharadita de esencia de vainilla</li>
+                                            <li>Dulce de leche</li>
+                                            <li>1/2 taza de nuez</li>
+                                            <li>4 bolas de helado de vainilla</li>
+                                        </ul>
+                                    
+                                        <h2>Preparación</h2>
+                                        <ol>
+                                            <li>Para las crepas, mezcla la harina con la Leche Evaporada CARNATION® CLAVEL®, la mantequilla, los huevos, el azúcar, la sal y la esencia de vainilla hasta obtener una textura homogénea.</li>
+                                            <li>Engrasa una sartén con un poco de mantequilla y calienta a fuego medio. Agrega un cucharón de la mezcla y extiende en toda la superficie para formar la crepa. Da la vuelta para cocinar del otro lado y retira de la sartén. Repite con el resto de la preparación.</li>
+                                            <li>Unta dulce de leche en cada crepa y agrega nuez. Dobla para formar la crepa y acompaña con una bola de helado.</li>
+                                        </ol>
+                                    </div>
+                                   
+                                </div>
+                            </section>
+                            <section class="recipe">
+                                <div class="offer-item">
+                                    <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                    <div>
+                                        <h3>Galletas de Dulce de Leche</h3>
+<div class="recipe-info">
+    <p><strong>Dificultad:</strong> Fácil</p>
+    <p><strong>Porciones:</strong> 30</p>
+    <p><strong>Tiempo Total:</strong> 77 min</p>
+</div>
+<p>El término «galleta» tiene sus raíces en la palabra francesa ‘galette’, utilizada para referirse a una especie de crepe plano en Francia. En la antigua Grecia, se llegaron a crear hasta 72 tipos de galletas, gracias a la adición de diversos aromas a la masa. La palabra inglesa «biscuit» tiene su origen en Roma, donde un chef las llamó ‘Bis Coctum’, que significa cocido dos veces. En el siglo XIX, las galletas tomaron un papel protagonista en la escena culinaria al incorporar a su masa ingredientes como mantequilla, azúcar y especias. Este cambio no solo llevó a una expansión en su variedad sino también a una creciente demanda de estos deliciosos bocados.</p>
+
+<h2>Ingredientes</h2>
+<ul>
+    <li>2 barras de mantequilla (90 g c/u), sin sal</li>
+    <li>1 lata de dulce de leche</li>
+    <li>2 piezas de huevo</li>
+    <li>1 1/2 taza de harina de trigo</li>
+    <li>1 cucharadita de polvo para hornear</li>
+    <li>1 botella de dulce de leche</li>
+    <li>1 taza de nuez picada</li>
+</ul>
+
+<h2>Preparación</h2>
+<ol>
+    <li>Horno precalentado a 180 °C.</li>
+    <li>Bate la mantequilla hasta que esponje, agrega el dulce de leche LA LECHERA® y el huevo hasta integrar completamente. Añade poco a poco la harina junto con el polvo para hornear previamente pasados por un colador. En una charola cubierta con papel encerado, coloca un poco de la mezcla anterior con ayuda de una cuchara, presiona el centro con tu dedo pulgar para formar un hueco y refrigera por 20 minutos.</li>
+    <li>Hornea a 180 °C por 15 minutos o hasta que las orillas estén doradas. Retira del horno y deja enfriar.</li>
+    <li>Rellena el centro de las galletas con un poco de dulce de leche LA LECHERA® y nueces picadas.</li>
+</ol>
+                                    </div>
+                                   
+                                </div>
+                            </section>
+                                
+                            </div>
+
+
+                        </div>
+                        <!--postres-->
+                        <div>
+                            <div class="offer-item">
+                                <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                <div><h3>Affogato</h3>
+                                    <div class="recipe-info">
+                                        <p><strong>Dificultad:</strong> Fácil</p>
+                                        <p><strong>Porciones:</strong> 2</p>
+                                        <p><strong>Tiempo Total:</strong> 20 min</p>
+                                    </div>
+                                    <p>El affogato es una exquisitez compuesta por ingredientes calientes y fríos, una mezcla rica y cremosa compuesta de dos sabores muy diferentes. Generalmente, se considera una bebida, pero otros creen que es un postre. Su origen es italiano y la palabra affogato se traduce literalmente como “ahogado” en español. Su nombre es adecuado, ya que el affogato no es más que una bola de helado “ahogada” en un espresso.</p>
+                                    <p>Keiko Sato, barista y compradora de café certificada por la SCA, afirma: “Es difícil encontrar la fecha específica de la invención del affogato, imagino que surgió después de la invención de la máquina de espresso, pero solo comenzó a extenderse a finales de 1900”.</p>
+                                    
+                                    <h2>Ingredientes</h2>
+                                    <ul>
+                                        <li>Café (bebida): 200 ml</li>
+                                        <li>Helado de vainilla (2-4 bolas)</li>
+                                    </ul>
+                                
+                                    <h2>Preparación</h2>
+                                    <ol>
+                                        <li>Preparamos el café siguiendo los hábitos de cada cual.</li>
+                                        <li>Una vez esté listo el café (podemos dejar que atempere 10-15 minutos).</li>
+                                        <li>Colocamos dos bolas de helado de vainilla en una taza.</li>
+                                        <li>Regamos con el café, cantidad al gusto, y servimos inmediatamente.</li>
+                                        <li>Añadir un chorrito de licor (el Baileys es perfecto para la ocasión) y algún que otro topping (salsa de chocolate, almendras picadas, etc).</li>
+                                    </ol>
+                                </div>
+                               
+                            </div>
+                            <div class="offer-item">
+                                <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                <div> <h3>Bloody Mary</h3>
+                                    <div class="recipe-info">
+                                        <p><strong>Dificultad:</strong> Intermedio</p>
+                                        <p><strong>Porciones:</strong> 2</p>
+                                        <p><strong>Tiempo Total:</strong> 10 min</p>
+                                    </div>
+                                    <p>El Bloody Mary es uno de los cócteles más populares de todos los tiempos. Se dice que fue inventado por un barman llamado Fernand Petiot en el Harry’s New York Bar de París en 1920, mezclando a partes iguales vodka y zumo de tomate.</p>
+                                
+                                    <h2>Ingredientes</h2>
+                                    <ul>
+                                        <li>Vodka: 70 ml</li>
+                                        <li>Zumo de tomate: 210 ml</li>
+                                        <li>Zumo de limón: 15 ml</li>
+                                        <li>Salsa Tabasco: dos gotas</li>
+                                        <li>Salsa Worcestershire: tres gotas</li>
+                                        <li>Pimienta negra molida</li>
+                                        <li>Apio</li>
+                                    </ul>
+                                
+                                    <h2>Preparación</h2>
+                                    <ol>
+                                        <li>A la hora de condimentar este cóctel, es fundamental un buen toque de salsa Perrins, muy poco Tabasco (dos gotas) y dos o tres vueltas de pimienta negra.</li>
+                                        <li>Opcionalmente se puede añadir un chorrito de caldo concentrado de carne para potenciar el sabor.</li>
+                                        <li>Agregamos el zumo de limón y agitamos con un cubo de hielo para mezclar bien y enfriar.</li>
+                                        <li>Incorporamos el vodka, utilizando una medida del jigger pequeño o grande.</li>
+                                        <li>Para incorporar el apio y la sal, el barman recomienda utilizar sal de apio.</li>
+                                        <li>Terminamos la preparación con una ramita de apio dentro del vaso.</li>
+                                        <li>Agitamos y servimos en la copa, finalizando con la ramita de apio fresco.</li>
+                                    </ol>
+                                </div>
+                               
+                            </div>
+                            <div class="offer-item">
+                                <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                <div>
+                                    <h3>Negroni</h3>
+<div class="recipe-info">
+    <p><strong>Dificultad:</strong> Fácil</p>
+    <p><strong>Porciones:</strong> 2</p>
+    <p><strong>Tiempo Total:</strong> 10 min</p>
+</div>
+<p>El Negroni es uno de los más legendarios cócteles de aperitivo. Se dice que el conde Camillo Negroni pidió al barman del Caffè Casoni que cambiara la soda por ginebra, creando así uno de los cócteles más famosos.</p>
+
+<h2>Ingredientes</h2>
+<ul>
+    <li>300 ml de Campari</li>
+    <li>300 ml de vermú rojo</li>
+    <li>300 ml de ginebra</li>
+    <li>Naranja</li>
+</ul>
+
+<h2>Preparación</h2>
+<ol>
+    <li>Servir en hielo, preferiblemente en vaso bajo y ancho con una cáscara de naranja.</li>
+    <li>Mezclar directamente en el vaso.</li>
+    <li>Llenar el vaso de hielo y verter las partes de Campari, vermú rojo y ginebra.</li>
+    <li>Remover bien y terminar con un twist de naranja.</li>
+</ol>
+                                </div>
+                               
+                            </div>
+                            <div class="offer-item">
+                                <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                <div>
+                                    <h3>Piña Colada</h3>
+<div class="recipe-info">
+    <p><strong>Dificultad:</strong> Fácil</p>
+    <p><strong>Porciones:</strong> 2</p>
+    <p><strong>Tiempo Total:</strong> 10 min</p>
+</div>
+<p>La piña colada es uno de los cócteles más populares de la historia, atribuida a Ramón "Monchito" Marrero en 1954.</p>
+
+<h2>Ingredientes</h2>
+<ul>
+    <li>120 ml de ron blanco</li>
+    <li>120 ml de leche de coco</li>
+    <li>120 ml de zumo de piña</li>
+    <li>30 ml de zumo de lima</li>
+    <li>44 ml de sirope de azúcar (opcional)</li>
+</ul>
+
+<h2>Preparación</h2>
+<ol>
+    <li>Mezclar en una batidora el ron blanco, crema o leche de coco y zumo de piña.</li>
+    <li>Añadir zumo de lima y sirope de azúcar si es necesario.</li>
+    <li>Mezclar con hielo picado hasta lograr la consistencia deseada.</li>
+    <li>Servir en vaso alto con decoración de piña natural y una sombrilla.</li>
+</ol>
+                                </div>
+                               
+                            </div>
+                            <div class="offer-item">
+                                <img src="images/menu-item-thumbnail-07.jpg" alt="" class="img-responsive">
+                                <div>
+                                    <h3>Long Island Iced Tea</h3>
+<div class="recipe-info">
+    <p><strong>Dificultad:</strong> Difícil</p>
+    <p><strong>Porciones:</strong> 2</p>
+    <p><strong>Tiempo Total:</strong> 15 min</p>
+</div>
+<p>El origen del Long Island Iced Tea es incierto, pero su nombre se debe a su parecido con el té helado, aunque no lleva té.</p>
+
+<h2>Ingredientes</h2>
+<ul>
+    <li>1 parte de ron blanco</li>
+    <li>1 parte de tequila</li>
+    <li>1 parte de ginebra</li>
+    <li>1 parte de Cointreau o triple seco</li>
+    <li>1 parte de vodka</li>
+    <li>2 partes de limón</li>
+    <li>5 partes de refresco de cola</li>
+</ul>
+
+<h2>Preparación</h2>
+<ol>
+    <li>Preparar directamente en un vaso alto con hielo.</li>
+    <li>Juntar los cinco licores blancos en el vaso.</li>
+    <li>Añadir el zumo de limón, refresco de cola y remover con cuidado.</li>
+    <li>Servir acompañado de una rodaja de limón y hierbabuena.</li>
+</ol>
+                                </div>
+                               
+                            </div>
+
+                           
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        <!--bebidas-->
+                    </div>
+                <!-- end tab-menu -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+    </div>
+
+
+    <script src="pruebasearch.js"></script>
+</body>
+</html>

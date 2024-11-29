@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, sans-serif;
+}
+/* Sidebar styles */
+.sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    padding-top: 20px;
+    height: calc(100vh - 20px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px; /* Ancho reducido */
+    background-color: #343a40;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar.hidden {
+    left: -200px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar .nav-link {
+    color: #c2c7d0;
+    display: flex; /* Asegura que el icono y el texto estén en línea */
+    align-items: center; /* Alinea verticalmente el icono y el texto */
+}
+
+.sidebar .nav-link:hover {
+    color: #ffffff;
+    background-color: #1e282c;
+}
+
+.sidebar .nav-icon {
+    margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+.sidebar .nav-link p {
+    margin-bottom: 0; /* Elimina el margen inferior del texto */
+}
+
+.navbar {
+    margin-left: 250px;
+}
+
+.main-header.navbar {
+    margin-left: 200px;
+    transition: margin-left 0.3s ease-in-out;
+}
+.main-header.navbar.compact {
+    margin-left: 0;
+    transition: margin-left 0.3s ease-in-out;
+}
+.user-panel .image img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.user-panel .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.user-panel .info a {
+    color: #c2c7d0;
+    font-weight: 600;
+}
+.user-panel .info a:hover {
+    color: #ffffff;
+}
+.navbar-search-block {
+    display: none;
+}
+.navbar-search-block.active {
+    display: block;
+}
+
+.navbar-search-block .form-inline {
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-nav .nav-link {
+    color: #000;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+.dropdown-menu-lg .media {
+    align-items: center;
+}
+
+.img-size-50 {
+    width: 50px;
+    height: 50px;
+}
+
+.media-body h3 {
+    margin: 0;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.375rem 0.75rem;
+    text-align: center;
+    vertical-align: baseline;
+    border-radius: 0.375rem;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+/*Carrusel*/
+
+.comment-item {
+    padding-top: 20px;
+    padding: 40px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10px;
+}
+.comment-item img {
+    margin-bottom: 10px;
+}
+.comment-item h5 {
+    margin-bottom: 5px;
+}
+.comment-item p.text-muted {
+    margin-bottom: 15px;
+}
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rating .fa-star,
+.rating .fa-star-half-alt {
+    color: #ffc107;
+    margin-left: 5px;
+}
+/* Asegúrate de que el carrusel no se superponga con el sidebar */
+.carousel.slide {
+    margin-left: 240px;
+}

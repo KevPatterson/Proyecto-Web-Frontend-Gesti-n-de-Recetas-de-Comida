@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+
+    <!-- Site Metas -->
+    <title>Cocina con nosotros</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="Proyecto de Gestion de Recetas de Cocina">
+    <meta name="author" content="Patterson">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="https://unicons.iconscout.com/release/v4.0.8/script/monochrome/bundle.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/thinline.css">
+    <script src="https://kit.fontawesome.com/45c72ddee0.js" crossorigin="anonymous"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Boostrap Icon 5 cdn-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- color -->
+    <link id="changeable-colors" rel="stylesheet" href="css/colors/orange.css" />
+    <!-- Modernizer -->
+    <script src="js/modernizer.js"></script>
+
+    <title>Crud Operations </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loader">
+        <div id="status"></div>
+    </div>
+    <section class="p-3">
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-primary newReceipe" data-bs-toggle="modal" data-bs-target="#receipeForm">Nueva receta <i class="bi bi-receipt"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-striped table-hover mt-3 text-center table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nombre de la receta</th>
+                            <th>Foto de la receta</th>
+                            <th>Ingredientes</th>
+                            <th>Preparacion</th>
+                            <th>Tiempo de Preparacion</th>
+                            <th>Porciones</th>
+                            <th>Categorias</th>
+                            <th>Dificultad</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data">
+                        
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    </section>    
+
+<!--Model Form-->
+    <div class="modal fade" id="receipeForm">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+            
+                <div class="modal-header">
+                    <h4 class="modal-title">Rellena los datos de la receta</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <form action="#" id="myForm">
+                        <div class="card imgholder">
+                            <label for="imgInput" class="upload">
+                                <input type="file" name="imgFile" id="imgInput" >
+                                <i class="bi bi-plus-circle"></i>
+                            </label>
+                        <img src="img/profile.png" alt="" height="200" width="200" class="img">
+                        </div>
+                        <div class="inputField">
+                            <div>
+                                <label for="nombreReceta">Nombre de la receta: </label>
+                                <input type="text" name="" id="nombreReceta" required>
+                            </div>
+                            <div>
+                                <label for="ingredt">Ingredientes: </label>
+                                <input type="text" name="" id="ingredt" required>
+                            </div>
+                            <div>
+                                <label for="prep">Preparacion: </label>
+                                <input type="text" name="" id="prep" required>
+                            </div>
+                            <div>
+                                <label for="tPrep">Tiempo de Preparacion: </label>
+                                <input type="time" name="" id="tPrep"  required>
+                            </div>
+                            <div>
+                                <label for="porc">Porciones: </label>
+                                <input type="number" name="" id="porc" min="1" required>
+                            </div>
+                            <div>
+                                <label for="cat">Elija la Categoría:</label>
+                                <select name="" id="cat" class="inputField" required="required" data-error="La Categoria es requerida.">
+                                    <option opcion Desabilitada>Categoria:</option>
+                                    <option>Desayuno</option>
+                                    <option>Comidas</option>
+                                    <option>Postres</option>
+                                    <option>Bebidas</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="dif">Elija la Dificultad:</label>
+                                <select name="" id="dif" class="inputField" required="required" data-error="La Dificultad es requerida.">
+                                    <option opcion Desabilitada>Dificultad:</option>
+                                    <option>Casero</option>
+                                    <option>Profesional</option>
+                                    <option>Gourmet</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="myForm" class="btn btn-primary submit ">Agregar Receta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--Read data modal-->
+<div class="modal fade" id="readData">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+        
+            <div class="modal-header">
+                <h4 class="modal-title">Datos de la Receta</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <form action="#" id="myForm">
+                    <div class="card imgholder">
+                    
+                    <img src="img/profile.png" alt="" height="200" width="200" class="showImg">
+                    </div>
+                    <div class="inputField"> 
+                        <div>
+                            <label for="nombreReceta">Nombre de la receta: </label>
+                            <input type="text" name="" id="shownombreReceta" disabled>
+                        </div>
+                        <div>
+                            <label for="ingredt">Ingredientes: </label>
+                            <input type="text" name="" id="showingredt" disabled>
+                        </div>
+                        <div>
+                            <label for="prep">Preparacion: </label>
+                            <input type="text" name="" id="showprep" disabled>
+                        </div>
+                        <div>
+                            <label for="tPrep">Tiempo de Preparacion: </label>
+                            <input type="number" name="" id="showtPrep" disabled>
+                        </div>
+                        <div>
+                            <label for="porc">Porciones: </label>
+                            <input type="number" name="" id="showporc" disabled>
+                        </div>
+                        <div>
+                            <label for="cat">Elija la Categoría:</label>
+                            <select name="" id="showcat" class="inputField" required="required" data-error="La Categoria es requerida." disabled>
+                                <option opcion Desabilitada>Categoria:</option>
+                                <option>Desayuno</option>
+                                <option>Comidas</option>
+                                <option>Postres</option>
+                                <option>Bebidas</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="dif">Elija la Dificultad:</label>
+                            <select name="" id="showdif" class="inputField" required="required" data-error="La Dificultad es requerida." disabled>
+                                <option opcion Desabilitada>Dificultad:</option>
+                                <option>Casero</option>
+                                <option>Profesional</option>
+                                <option>Gourmet</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- ALL JS FILES -->
+    <script src="js/all.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="js/custom.js"></script>
+    <script src="js/recetasForm.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>
