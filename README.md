@@ -1,25 +1,21 @@
-Thanks for downloading this theme!
+# Gestión de Recetas de Comida
 
-## Other Useful Links
+<p>
+El proyecto consiste en el diseño y desarrollo de una aplicación web que permita la publicación, búsqueda y gestión de recetas de cocina. Los usuarios podrán interactuar a través de valoraciones, comentarios y categorías, mientras que un rol de moderador supervisará y gestionará las publicaciones y usuarios.
 
-**ThemeWagon** is a great source for downloading free HTML templates built with the latest technology.
+La plataforma estará diseñada para fomentar la interacción entre usuarios, ofreciendo herramientas intuitivas y funcionalidades avanzadas como búsqueda avanzada, control de publicaciones y moderación de contenido.
+</p>
 
-To download free templates, follow this link: https://themewagon.com/theme_tag/free/
+##Tecnologías utilizadas: 
+- HTML
+- CSS
+- Js
+- Boostrap
+- JQuery
 
-Besides that, you can buy our premium templates for making your web development experience unforgettable.
+###Objetivo General
 
-Visit the store from here: https://themewagon.com/theme-categories/premium-templates/
-
-Alternatively, here's our top most trending and selling items:
-
-* [**Sparrow**](https://themewagon.com/themes/sparrow/) - A multipurpose template made with Bootstrap 4.1 and world's finest animation.
-* [**Posh**](https://themewagon.com/themes/posh-html5-bootstrap-4-template/) - Bootstrap 4 template with a myriad number of ready-to-deploy sections. 
-* [**Elixir**](https://themewagon.com/themes/elixir-elegant-html5-bootstrap-template-consultancy-agency-website/) - Bootstrap 4 agency template. Best for smooth animated scrolling. 
-* [**Freya**](https://themewagon.com/themes/bootstrap-4-premium-interior-design-template-freya/) - Interior design template made with Bootstrap 4. 
-* [**Reign Pro**](https://themewagon.com/themes/reign-pro-premium-corporate-agency-html5-template/) - A corporate template with a visually unique design scheme. 
-* [**Boots4**](https://themewagon.com/themes/first-ever-bootstrap-4-template/) - One of the first Bootstrap 4 templates ever made on earth. 
-* [**Hideaway**](https://themewagon.com/themes/hideaway/) - A template for resorts. Built with Bootstrap 4. 
-* [**Baikal**](https://themewagon.com/themes/bootstrap-4-startup-small-business-website-template/) - A smart Bootstrap template for start-up. 
-* [**Mega Discount**](https://themewagon.com/themes/mega-discount-bundle/) - A bundle of 26 HTML5 templates; best value for your money. 
+Ofrecer una plataforma web segura y accesible para compartir y buscar recetas de cocina, promoviendo la interacción entre usuarios y garantizando la calidad de las publicaciones mediante un sistema de moderación.
 
 
+####Fin
